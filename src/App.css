@@ -1,0 +1,291 @@
+/* App.css */
+:root {
+  --primary-bg: #000;
+  --secondary-bg: #1a1a1a;
+  --accent-white: #fff;
+  --text-color: #fff;
+  --text-light: #ccc;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+
+  --primary-cream: #000;
+  --secondary-cream: #1a1a1a;
+  --accent-pink: #888;
+  --accent-pink-dark: #ccc;
+  --accent-dark: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+  background-color: var(--primary-cream);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-screen {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-cream);
+}
+
+.loading-screen h1 {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  
+}
+  
+
+.welcome-message {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 2px dashed var(--accent-pink);
+}
+
+.welcome-message h1 {
+  color: var(--accent-white);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+}
+
+.notes-section, .gallery-section {
+  margin-bottom: 3rem;
+}
+
+.notes-section h2, .gallery-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-pink);
+  color: var(--accent-pink-dark);
+}
+
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px; /* Batasi agar tidak terlalu melebar di desktop */
+  margin: 0 auto;     /* Tengahin konten */
+  padding: 1rem;
+}
+
+
+@media (min-width: 1024px) {
+  .notes-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.note-card-container {
+  perspective: 1000px;
+  cursor: pointer;
+  height: 200px;
+}
+
+.note-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.note-front, .note-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-front {
+  background-color: var(--secondary-cream);
+  border: 1px solid var(--accent-pink);
+}
+
+.note-back {
+  background-color: var(--secondary-bg);
+  transform: rotateY(180deg);
+  justify-content: center;
+  border: 1px solid var(--accent-pink);
+  color: var(--text-light);
+}
+
+.note-front h3 {
+  margin-bottom: 0.5rem;
+  color: var(--accent-pink-dark);
+}
+
+.note-date {
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.card-decoration, .card-decoration-back {
+  position: absolute;
+  font-size: 1.5rem;
+}
+
+.card-decoration {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.card-decoration-back {
+  top: 1rem;
+  left: 1rem;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.photo-item {
+  background-color: var(--secondary-bg);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  border: 1px solid var(--accent-pink);
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--border-radius) - 4px);
+  margin-bottom: 0.5rem;
+}
+
+.photo-caption {
+  font-style: italic;
+  color: var(--text-light);
+}
+
+.site-header {
+  background-color: rgb(93, 91, 91);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-bottom: 3px solid var(--accent-pink);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.book-icon {
+  font-size: 1.8rem;
+  margin-right: 0.8rem;
+}
+
+.logo h1 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--accent-dark);
+  letter-spacing: 0.5px;
+}
+
+.date-display {
+  color: var(--text-light);
+}
+
+.site-footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--secondary-cream);
+  border-top: 3px solid var(--accent-dark);
+}
+
+/* Animasi ornamen dekoratif */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+  
+  .notes-container, .photo-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .welcome-message h1 {
+    font-size: 2rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
