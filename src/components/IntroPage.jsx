@@ -38,7 +38,7 @@ const IntroPage = ({ onEnter }) => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          A Little Message
+          A Little Message 
         </motion.h1>
         
         <motion.p 
@@ -47,7 +47,11 @@ const IntroPage = ({ onEnter }) => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.3 }}
         >
-          Halo! Ada Pesan Nih Dari Udin Buat Kamu!
+          for :
+          d__a.r_a,
+          bubblefiest,
+          ffrraml,
+          stxrypearl.
         </motion.p>
         
         <motion.button 

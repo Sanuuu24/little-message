@@ -12,15 +12,7 @@ const Header = () => {
       >
         <div className="logo">
           <img src="/book.svg" alt="Logo Buku" className="book-icon" />
-          <h1>Notes</h1>
-        </div>
-        <div className="date-display">
-          {new Date().toLocaleDateString("id-ID", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          <h1>Little Message.</h1>
         </div>
       </motion.div>
     </header>

@@ -6,6 +6,7 @@ import PhotoGallery from "./components/PhotoGallery";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import IntroPage from "./components/IntroPage";
+import LastMemory from "./components/LastMemory";
 import Photo1 from "./assets/img1.jpg";
 import Photo2 from "./assets/img2.jpg";
 import Photo3 from "./assets/img3.jpg";
@@ -64,24 +65,29 @@ function App() {
       id: 1,
       src: Photo3,
       alt: "Awal mula Negara api menyerang",
-      caption: "Inget ga ini kapan? HAHAHA, Ini tuh awal mula aku suka sama kamu padahal di posisi itu aku tahu kamu lagi deket sama fadli, dan Aku baru putus sama someone, Sampe pas foto ini tuh aku sengaja foto nya pengen depan kamu wkwk, Kalo diinget aku dulu masih labil ya sampe bikin surat terus ada scan spotify lagu nya yang boy pablo judul nya 'i <3 u' HAHAHA kocak jir, dan Di posisi ini aku belum sadar kalo aku ga pantes buat kamu, Sampe dengan lantang nya waktu itu nembak kamu HAHAHA. ",
+      caption:
+        "Inget ga ini kapan? HAHAHA, Ini tuh awal mula aku suka sama kamu padahal di posisi itu aku tahu kamu lagi deket sama fadli, dan Aku baru putus sama someone, Sampe pas foto ini tuh aku sengaja foto nya pengen depan kamu wkwk, Kalo diinget aku dulu masih labil ya sampe bikin surat terus ada scan spotify lagu nya yang boy pablo judul nya 'i <3 u' HAHAHA kocak jir, dan Di posisi ini aku belum sadar kalo aku ga pantes buat kamu, Sampe dengan lantang nya waktu itu nembak kamu HAHAHA. ",
     },
-    { 
+    {
       id: 2,
-      src: Photo2, 
-      alt: "Pertengahan Cerita", 
-      caption: "Ini dimana aku, dan Kamu udah sibuk sama kehidupan masing-masing, dan Kamu lagi ngejalanin hubungan sama fadli, dan Aku ngejalanin hubungan juga sama julia disini, Ga ada yang bisa diceritain banyak sih dari kondisi ini, Karena aku juga di kondisi ini belum ngerasa impact dari kedatangan kamu ke hidup aku tuh impact nya segede apa. " 
+      src: Photo2,
+      alt: "Pertengahan Cerita",
+      caption:
+        "Ini dimana aku, dan Kamu udah sibuk sama kehidupan masing-masing, dan Kamu lagi ngejalanin hubungan sama fadli, dan Aku ngejalanin hubungan juga sama julia disini, Ga ada yang bisa diceritain banyak sih dari kondisi ini, Karena aku juga di kondisi ini belum ngerasa impact dari kedatangan kamu ke hidup aku tuh impact nya segede apa. ",
     },
-    { 
-      id: 3, 
-      src: Photo4, 
-      alt: "Akhir Semester 1", 
-      caption: "Disini aku udah mulai ngerasa impact nya kedatangan kamu ke hidup aku gimana, Aku disini mulai mikirin hal-hal yang seharus nya aku ga pikirin, Selalu ngerasa khawatir ga jelas kadang panik sendiri wkwk, Aku juga mulai jarang sekolah karena malu sama orang orang di sekolah, Termasuk kamu." 
+    {
+      id: 3,
+      src: Photo4,
+      alt: "Akhir Semester 1",
+      caption:
+        "Disini aku udah mulai ngerasa impact nya kedatangan kamu ke hidup aku gimana, Aku disini mulai mikirin hal-hal yang seharus nya aku ga pikirin, Selalu ngerasa khawatir ga jelas kadang panik sendiri wkwk, Aku juga mulai jarang sekolah karena malu sama orang orang di sekolah, Termasuk kamu.",
     },
-    { 
-      id: 4, 
-      src: Photo1, alt: "Ujian Praktek Terakhir Kelas 9", 
-      caption: "Diposisi ini aku ngerasa gambling, bingung, dan takut, Karena aku denger waktu itu kamu baru putus sama fadli, Dan aku disini mulai ngedeketin kamu lagi (Sebelum di dufan aku nembak kamu wkwk.), Karena aku ngerasa waktu itu kita gabakalan deket lagi, dan Bakalan lostcontact karena bentar lagi mau lulus." 
+    {
+      id: 4,
+      src: Photo1,
+      alt: "Ujian Praktek Terakhir Kelas 9",
+      caption:
+        "Diposisi ini aku ngerasa gambling, bingung, dan takut, Karena aku denger waktu itu kamu baru putus sama fadli, Dan aku disini mulai ngedeketin kamu lagi (Sebelum di dufan aku nembak kamu wkwk.), Karena aku ngerasa waktu itu kita gabakalan deket lagi, dan Bakalan lostcontact karena bentar lagi mau lulus.",
     },
   ];
 
@@ -157,7 +163,18 @@ function App() {
               <h2>Selamat Membaca!</h2>
               <PhotoGallery photos={photos} />
             </motion.section>
+
+            <motion.section
+              className="last-message-section"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1 }}
+            >
+              <h2>End</h2>
+              <LastMemory />
+            </motion.section>
           </main>
+
           <Footer />
         </>
       ) : null}
