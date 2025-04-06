@@ -31,12 +31,6 @@ function NoteCard({ note }) {
       </div>
       
       <div className="wattpad-card-footer">
-        <button 
-          className="wattpad-card-button" 
-          onClick={handleClick}
-        >
-          {isExpanded ? "Baca Lebih Sedikit" : "Baca Selengkapnya"}
-        </button>
         <div className="wattpad-card-decoration">✨</div>
       </div>
     </motion.div>

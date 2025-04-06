@@ -25,7 +25,7 @@ function PhotoCard({ photo }) {
       </div>
       
       <div className="wattpad-photo-footer">
-        <div className="wattpad-photo-date">{photo.date || "Kenangan Indah"}</div>
+        <div className="wattpad-photo-date">{photo.date || "Memory"}</div>
         <div className="wattpad-photo-decoration">📸</div>
       </div>
     </motion.div>
