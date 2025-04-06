@@ -1,0 +1,149 @@
+.intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    max-width: 90%;
+  }
+  
+  .icon-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2rem;
+  }
+  
+  .icon-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--secondary-cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .icon-offset-1 {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 70%;
+  }
+  
+  .icon-offset-2 {
+    width: 50px;
+    height: 50px;
+    top: 70%;
+    left: 30%;
+  }
+  
+  .icon-offset-3 {
+    width: 55px;
+    height: 55px;
+    top: 75%;
+    left: 75%;
+  }
+  
+  .icon-primary {
+    color: var(--accent-white);
+  }
+  
+  .icon-secondary {
+    color: var(--text-light);
+  }
+  
+  .icon-accent {
+    color: var(--accent-pink);
+  }
+  
+  .intro-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--accent-white);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .intro-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  
+  .intro-button {
+    background-color: transparent;
+    color: var(--accent-white);
+    border: 2px solid var(--accent-pink);
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+  
+  .intro-button:hover {
+    background-color: var(--accent-pink);
+    color: var(--primary-cream);
+    border-color: var(--accent-pink);
+  }
+  
+  /* Media Queries untuk Responsivitas */
+  @media (max-width: 768px) {
+    .intro-title {
+      font-size: 2.5rem;
+    }
+    
+    .intro-subtitle {
+      font-size: 1rem;
+    }
+    
+    .icon-container {
+      transform: scale(0.9);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .intro-title {
+      font-size: 2rem;
+    }
+    
+    .intro-subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    
+    .intro-button {
+      padding: 0.7rem 2rem;
+      font-size: 1rem;
+    }
+    
+    .icon-container {
+      transform: scale(0.8);
+      margin-bottom: 1.5rem;
+    }
+  }

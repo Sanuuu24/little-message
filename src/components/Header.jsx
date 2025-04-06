@@ -11,7 +11,7 @@ const Header = () => {
         transition={{ duration: 0.8 }}
       >
         <div className="logo">
-        <img src="/book.svg" alt="Logo Buku" className="book-icon" />
+          <img src="/book.svg" alt="Logo Buku" className="book-icon" />
           <h1>Notes</h1>
         </div>
         <div className="date-display">

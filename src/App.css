@@ -31,22 +31,29 @@ body {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.container {
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   width: 100%;
 }
 
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
 
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .loading-screen {
@@ -64,24 +71,20 @@ body {
 }
 
 .loading-screen h1 {
-  font-size: 5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .content {
   flex: 1;
-  max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  
+  padding: 2rem 1rem;
 }
-  
 
 .welcome-message {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: var(--secondary-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -90,12 +93,12 @@ body {
 
 .welcome-message h1 {
   color: var(--accent-white);
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
 .welcome-message p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .notes-section, .gallery-section {
@@ -112,25 +115,16 @@ body {
 
 .notes-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
   width: 100%;
-  max-width: 1200px; /* Batasi agar tidak terlalu melebar di desktop */
-  margin: 0 auto;     /* Tengahin konten */
-  padding: 1rem;
-}
-
-
-@media (min-width: 1024px) {
-  .notes-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .note-card-container {
   perspective: 1000px;
   cursor: pointer;
   height: 200px;
+  width: 100%;
 }
 
 .note-card {
@@ -138,8 +132,13 @@ body {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  transition: transform 0.6s;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+}
+
+.note-card.flipped {
+  transform: rotateY(180deg);
 }
 
 .note-front, .note-back {
@@ -151,6 +150,7 @@ body {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .note-front {
@@ -194,7 +194,7 @@ body {
 
 .photo-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
@@ -221,9 +221,10 @@ body {
 
 .site-header {
   background-color: rgb(93, 91, 91);
-  padding: 1rem 2rem;
+  padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-bottom: 3px solid var(--accent-pink);
+  width: 100%;
 }
 
 .header-content {
@@ -232,6 +233,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .logo {
@@ -240,7 +243,8 @@ body {
 }
 
 .book-icon {
-  font-size: 1.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
   margin-right: 0.8rem;
 }
 
@@ -253,14 +257,16 @@ body {
 
 .date-display {
   color: var(--text-light);
+  font-size: 0.9rem;
 }
 
 .site-footer {
   margin-top: auto;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: var(--secondary-cream);
   border-top: 3px solid var(--accent-dark);
+  width: 100%;
 }
 
 /* Animasi ornamen dekoratif */
@@ -272,20 +278,235 @@ body {
 
 /* Media Queries untuk Responsivitas */
 @media (max-width: 768px) {
+  .welcome-message h1 {
+    font-size: 1.8rem;
+  }
+  
+  .welcome-message p {
+    font-size: 1rem;
+  }
+  
+  .header-content {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .notes-container, .photo-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
   .content {
+    padding: 1rem 0.5rem;
+  }
+  
+  .welcome-message {
     padding: 1rem;
+    margin-bottom: 2rem;
   }
   
   .notes-container, .photo-gallery {
     grid-template-columns: 1fr;
   }
   
-  .welcome-message h1 {
-    font-size: 2rem;
-  }
-  
   .header-content {
     flex-direction: column;
     gap: 0.5rem;
+  }
+  
+  .site-header {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Wattpad Style Cards */
+.wattpad-card {
+  width: 100%;
+  background-color: var(--secondary-cream);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 1px solid var(--accent-pink);
+  transition: all 0.3s ease;
+}
+
+.wattpad-card-header {
+  padding: 1.5rem 1.5rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wattpad-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-pink-dark);
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+}
+
+.wattpad-card-date {
+  color: var(--text-light);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.wattpad-card-content {
+  padding: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.wattpad-card-image-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.wattpad-card-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wattpad-card-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wattpad-card-button {
+  background-color: transparent;
+  border: 1px solid var(--accent-pink);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: var(--accent-pink-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wattpad-card-button:hover {
+  background-color: var(--accent-pink);
+  color: var(--primary-cream);
+}
+
+.wattpad-card-decoration {
+  font-size: 1.2rem;
+}
+
+/* Photo Gallery Wattpad Style */
+.wattpad-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.wattpad-photo-card {
+  width: 100%;
+  background-color: var(--secondary-cream);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  border: 1px solid var(--accent-pink);
+  transition: all 0.3s ease;
+}
+
+.wattpad-photo-image-container {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  position: relative;
+  overflow: hidden;
+}
+
+.wattpad-photo-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wattpad-photo-content {
+  padding: 1.5rem;
+}
+
+.wattpad-photo-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-pink-dark);
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+}
+
+.wattpad-photo-caption {
+  font-style: italic;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.wattpad-photo-story {
+  margin-top: 1rem;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.wattpad-photo-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wattpad-photo-date {
+  font-style: italic;
+  color: var(--text-light);
+}
+
+.wattpad-photo-decoration {
+  font-size: 1.2rem;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .wattpad-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .wattpad-card, .wattpad-photo-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .wattpad-card:hover, .wattpad-photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+  }
+}
+
+@media (min-width: 992px) {
+  .notes-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .wattpad-card-content, .wattpad-photo-story {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wattpad-card, .wattpad-photo-card {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

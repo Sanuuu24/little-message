@@ -5,11 +5,27 @@ import NoteCard from './components/NoteCard';
 import PhotoGallery from './components/PhotoGallery';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import IntroPage from './components/IntroPage';
 
 function App() {
   const [showContent, setShowContent] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const audioRef = useRef(null);
 
+  const handleEnter = () => {
+    setShowIntro(false);
+    // Timer untuk menampilkan konten utama setelah intro hilang
+    setTimeout(() => {
+      setShowContent(true);
+    }, 500);
+    
+    // Coba putar audio setelah interaksi user
+    if (audioRef.current) {
+      audioRef.current.play().catch((err) => {
+        console.log('Audio tidak dapat diputar:', err);
+      });
+    }
+  };
 
   useEffect(() => {
     const playAudio = () => {
@@ -22,14 +38,6 @@ function App() {
 
     window.addEventListener("click", playAudio);
     return () => window.removeEventListener("click", playAudio);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   const notes = [
@@ -64,12 +72,14 @@ function App() {
       {/* Musik autoplay */}
       <audio ref={audioRef} src="/background.mp3" loop />
 
-      {!showContent ? (
+      {showIntro && <IntroPage onEnter={handleEnter} />}
+
+      {!showContent && !showIntro ? (
         <motion.div 
           className="loading-screen"
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
         >
           <motion.div 
             className="loading"  
@@ -80,7 +90,7 @@ function App() {
           </motion.div>
           <p>Loading...</p>
         </motion.div>
-      ) : (
+      ) : !showIntro ? (
         <>
           <Header />
           <main className="container content">
@@ -127,7 +137,7 @@ function App() {
           </main>
           <Footer />
         </>
-      )}
+      ) : null}
     </div>
   );
 }

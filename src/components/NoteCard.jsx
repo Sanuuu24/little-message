@@ -2,31 +2,44 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 function NoteCard({ note }) {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   const handleClick = () => {
-    setIsFlipped(!isFlipped);
+    setIsExpanded(!isExpanded);
   };
   
   return (
-    <div className="note-card-container" onClick={handleClick}>
-      <motion.div 
-        className={`note-card ${isFlipped ? 'flipped' : ''}`}
-        initial={false}
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="note-front">
-          <h3>{note.title}</h3>
-          <p className="note-date">{note.date}</p>
-          <div className="card-decoration">✨</div>
-        </div>
-        <div className="note-back">
-          <p>{note.content}</p>
-          <div className="card-decoration-back"></div>
-        </div>
-      </motion.div>
-    </div>
+    <motion.div 
+      className="wattpad-card"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(255, 255, 255, 0.15)" }}
+    >
+      <div className="wattpad-card-header">
+        <h3 className="wattpad-card-title">{note.title}</h3>
+        <p className="wattpad-card-date">{note.date}</p>
+      </div>
+      
+      <div className="wattpad-card-content">
+        <p>{note.content}</p>
+        {note.image && (
+          <div className="wattpad-card-image-container">
+            <img src={note.image} alt={note.title} className="wattpad-card-image" />
+          </div>
+        )}
+      </div>
+      
+      <div className="wattpad-card-footer">
+        <button 
+          className="wattpad-card-button" 
+          onClick={handleClick}
+        >
+          {isExpanded ? "Baca Lebih Sedikit" : "Baca Selengkapnya"}
+        </button>
+        <div className="wattpad-card-decoration">✨</div>
+      </div>
+    </motion.div>
   );
 }
 
