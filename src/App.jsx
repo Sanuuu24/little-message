@@ -139,7 +139,7 @@ function App() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
-              <h2>Catatan Untukmu</h2>
+              <h2>Catatan Untuk Kamu</h2>
               <div className="notes-container">
                 {notes.map((note, index) => (
                   <motion.div
